@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin – Savora Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body data-page="admin" class="ad-body">
+
+  <!-- ===== SIGN IN / FIRST-TIME SETUP ===== -->
+  <main class="ad-gate" id="gate" hidden>
+    <form class="ad-gate-card" id="gate-form" autocomplete="off">
+      <a class="logo" href="index.html" aria-label="Savora home"><svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#e96820"/><path d="M9.5 25.5a10.5 10.5 0 0 1 21 0z" fill="#fff"/><circle cx="20" cy="13" r="1.9" fill="#fff"/><rect x="7" y="27" width="26" height="2.6" rx="1.3" fill="#f4b942"/></svg><b class="logo-text">Savora<i>.</i></b></a>
+      <h1 id="gate-title">Admin sign in</h1>
+      <p id="gate-sub">Enter your admin passcode to manage the restaurant.</p>
+      <div class="field"><label for="gate-pass" id="gate-label">Passcode</label>
+        <input id="gate-pass" type="password" placeholder="Enter passcode" autocomplete="current-password" required /></div>
+      <div class="field" id="gate-confirm-wrap" hidden><label for="gate-pass2">Repeat passcode</label>
+        <input id="gate-pass2" type="password" placeholder="Repeat passcode" autocomplete="new-password" /></div>
+      <div class="ad-error" id="gate-error" role="alert"></div>
+      <button class="btn" type="submit" id="gate-btn">SIGN IN</button>
+      <a class="ad-back" href="index.html">← Back to website</a>
+    </form>
+  </main>
+
+  <!-- ===== DASHBOARD ===== -->
+  <div class="ad-shell" id="app" hidden>
+    <aside class="ad-side">
+      <a class="logo" href="index.html" aria-label="Savora home"><svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#e96820"/><path d="M9.5 25.5a10.5 10.5 0 0 1 21 0z" fill="#fff"/><circle cx="20" cy="13" r="1.9" fill="#fff"/><rect x="7" y="27" width="26" height="2.6" rx="1.3" fill="#f4b942"/></svg><b class="logo-text">Savora<i>.</i></b></a>
+      <small class="ad-tag">ADMIN</small>
+      <nav class="ad-nav" id="nav" aria-label="Admin sections">
+        <button data-tab="overview" class="active"><span>▦</span>Overview</button>
+        <button data-tab="dishes"><span>🍽</span>Dishes</button>
+        <button data-tab="orders"><span>🧾</span>Orders <b id="badge-orders" hidden>0</b></button>
+        <button data-tab="transactions"><span>💳</span>Transactions <b id="badge-tx" hidden>0</b></button>
+        <button data-tab="reservations"><span>📅</span>Reservations <b id="badge-res" hidden>0</b></button>
+        <button data-tab="customers"><span>👥</span>Customers</button>
+        <button data-tab="reviews"><span>★</span>Reviews</button>
+        <button data-tab="settings"><span>⚙</span>Settings</button>
+      </nav>
+      <div class="ad-side-foot">
+        <a href="index.html" target="_blank" rel="noopener">View website ↗</a>
+        <button type="button" id="logout">Log out</button>
+      </div>
+    </aside>
+
+    <main class="ad-main">
+      <header class="ad-top">
+        <div><h1 id="tab-title">Overview</h1><p id="tab-sub">How the restaurant is doing.</p></div>
+        <div class="ad-top-actions" id="tab-actions"></div>
+      </header>
+
+      <!-- Overview -->
+      <section class="ad-tab" id="tab-overview">
+        <div class="kpis" id="kpis"></div>
+        <div class="ad-cols">
+          <div class="ad-card"><h3>Best-selling dishes</h3><div id="top-dishes"></div></div>
+          <div class="ad-card"><h3>Upcoming reservations</h3><div id="up-res"></div></div>
+        </div>
+        <div class="ad-card"><h3>Recent orders</h3><div class="ad-scroll" id="recent-orders"></div></div>
+      </section>
+
+      <!-- Dishes -->
+      <section class="ad-tab" id="tab-dishes" hidden>
+        <div class="ad-card flush"><div class="ad-scroll" id="dish-table"></div></div>
+      </section>
+
+      <!-- Orders -->
+      <section class="ad-tab" id="tab-orders" hidden>
+        <div class="ad-toolbar">
+          <select id="order-filter" aria-label="Filter orders"><option value="">All orders</option><option>New</option><option>Preparing</option><option>Delivered</option><option>Cancelled</option></select>
+        </div>
+        <div class="ad-card flush"><div class="ad-scroll" id="order-table"></div></div>
+      </section>
+
+      <!-- Transactions -->
+      <section class="ad-tab" id="tab-transactions" hidden>
+        <div class="tx-summary" id="tx-summary"></div>
+        <div class="ad-toolbar tx-toolbar">
+          <input id="tx-search" type="search" placeholder="Search transaction, customer or dish…" aria-label="Search transactions" />
+          <select id="tx-filter" aria-label="Filter transactions"><option value="">All payment statuses</option><option>Pending</option><option>Paid</option><option>Refunded</option></select>
+        </div>
+        <div class="ad-card flush"><div class="ad-scroll" id="tx-table"></div></div>
+        <p class="tx-note">Payment records are managed manually in this browser. Savora does not currently process or verify real payments through a payment gateway.</p>
+      </section>
+
+      <!-- Reservations -->
+      <section class="ad-tab" id="tab-reservations" hidden>
+        <div class="ad-toolbar">
+          <select id="res-filter" aria-label="Filter reservations"><option value="">All reservations</option><option>Pending</option><option>Confirmed</option><option>Cancelled</option></select>
+        </div>
+        <div class="ad-card flush"><div class="ad-scroll" id="res-table"></div></div>
+      </section>
+
+      <!-- Customers -->
+      <section class="ad-tab" id="tab-customers" hidden>
+        <div class="ad-card"><h3>Registered account</h3><div id="cust-table"></div></div>
+        <div class="ad-card flush"><h3 class="pad">Newsletter subscribers</h3><div class="ad-scroll" id="sub-table"></div></div>
+      </section>
+
+      <!-- Reviews -->
+      <section class="ad-tab" id="tab-reviews" hidden>
+        <div class="ad-card flush"><div class="ad-scroll" id="rev-table"></div></div>
+      </section>
+
+      <!-- Settings -->
+      <section class="ad-tab" id="tab-settings" hidden>
+        <div class="ad-cols">
+          <form class="ad-card" id="pass-form" autocomplete="off">
+            <h3>Change passcode</h3>
+            <div class="field"><label for="pw-old">Current passcode</label><input id="pw-old" type="password" required autocomplete="current-password" /></div>
+            <div class="field"><label for="pw-new">New passcode (6+ characters)</label><input id="pw-new" type="password" required minlength="6" autocomplete="new-password" /></div>
+            <div class="ad-error" id="pw-error" role="alert"></div>
+            <button class="btn btn-sm" type="submit">SAVE PASSCODE</button>
+          </form>
+          <div class="ad-card">
+            <h3>Data</h3>
+            <p class="muted">Everything here is stored in this browser. Download a backup any time.</p>
+            <div class="ad-btn-col">
+              <button class="btn btn-sm btn-outline" id="export">⬇ DOWNLOAD BACKUP (JSON)</button>
+              <button class="btn btn-sm btn-outline" id="sample">＋ ADD SAMPLE ORDERS &amp; BOOKINGS</button>
+              <button class="btn btn-sm btn-outline danger" id="clear-orders">CLEAR ALL ORDERS</button>
+              <button class="btn btn-sm btn-outline danger" id="clear-res">CLEAR ALL RESERVATIONS</button>
+              <button class="btn btn-sm btn-outline danger" id="reset-menu">RESET MENU TO ORIGINAL</button>
+            </div>
+          </div>
+        </div>
+        <div class="ad-note"><b>Good to know:</b> this admin works on the website’s browser storage, so it manages what was ordered or booked <em>in this browser</em>. To collect orders from real customers on their own phones, the site needs a server and database behind it.</div>
+      </section>
+    </main>
+  </div>
+
+  <!-- dish editor -->
+  <div class="ad-modal" id="modal" hidden>
+    <form class="ad-dialog" id="dish-form" novalidate>
+      <div class="ad-dialog-head"><h2 id="dish-title">Add dish</h2><button type="button" class="close-btn" id="dish-close" aria-label="Close">✕</button></div>
+      <div class="ad-dialog-body">
+        <div class="ad-grid2">
+          <div class="field"><label for="d-name">Dish name</label><input id="d-name" maxlength="60" required /></div>
+          <div class="field"><label for="d-cat">Category</label><input id="d-cat" list="cat-list" maxlength="30" required /><datalist id="cat-list"></datalist></div>
+          <div class="field"><label for="d-price">Price (₦)</label><input id="d-price" type="number" min="0" step="50" required /></div>
+          <div class="field"><label for="d-time">Prep time</label><input id="d-time" placeholder="e.g. 20 min" maxlength="20" /></div>
+          <div class="field"><label for="d-cal">Calories</label><input id="d-cal" placeholder="e.g. 650 kcal" maxlength="20" /></div>
+          <div class="field"><label for="d-serves">Serves</label><input id="d-serves" placeholder="e.g. 1 person" maxlength="20" /></div>
+        </div>
+        <div class="field"><label for="d-desc">Short description</label><input id="d-desc" maxlength="120" required /></div>
+        <div class="field"><label for="d-long">Full description</label><textarea id="d-long" rows="3" maxlength="400"></textarea></div>
+        <div class="field"><label for="d-ing">Ingredients (separate with commas)</label><input id="d-ing" placeholder="Rice, Tomatoes, Onions" /></div>
+        <div class="field"><label for="d-img">Photo</label>
+          <div class="ad-img-row"><img id="d-prev" alt="" /><div><input id="d-img" placeholder="Paste an image link…" />
+          <label class="btn btn-sm btn-outline ad-upload">⬆ Upload photo<input id="d-file" type="file" accept="image/*" hidden /></label></div></div></div>
+        <div class="ad-error" id="dish-error" role="alert"></div>
+      </div>
+      <div class="ad-dialog-foot"><button type="button" class="btn btn-sm btn-outline" id="dish-cancel">CANCEL</button><button type="submit" class="btn btn-sm">SAVE DISH</button></div>
+    </form>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

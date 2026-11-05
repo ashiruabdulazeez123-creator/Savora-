@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savora Restaurant – Good Food, Good Mood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="home">
+  <header id="site-header"></header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <img class="hero-bg" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=80" alt="" />
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Good Food | Good Mood</div>
+        <h1>Delicious Food for <em>Every Mood</em></h1>
+        <p>Enjoy tasty meals prepared with care. From local favourites to delicious treats, there's something special waiting for you.</p>
+        <div class="hero-buttons">
+          <a class="btn" href="menu.html">🍴 EXPLORE MENU</a>
+          <a class="btn btn-light" href="login.html#register">✉ CREATE ACCOUNT</a>
+        </div>
+        <div class="hero-features">
+          <div><span>🌿</span>Fresh<br />Ingredients</div>
+          <div><span>👨‍🍳</span>Skilled<br />Chefs</div>
+          <div><span>❤️</span>Made with<br />Love</div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="coverflow" id="coverflow" aria-roledescription="carousel" aria-label="Popular dishes"></div>
+        <div class="cf-dots" id="cf-dots"></div>
+        <div class="float-card fc-1"><div class="ico">⭐</div><div><strong>4.9</strong><small>2,500+ reviews</small></div></div>
+        <div class="float-card fc-2"><div class="ico">🛵</div><div><strong>30 min</strong><small>Fast delivery</small></div></div>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"></div>
+
+    <!-- STEAM ANIMATION: pot, drifting steam, thick mist and the wiping handkerchief (see steam.js) -->
+    <canvas class="steam-canvas" id="steam-canvas" aria-hidden="true"></canvas>
+    <div class="pot" id="pot" aria-hidden="true">
+      <svg viewBox="0 0 240 190" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="potBody" x1="0" x2="1">
+            <stop offset="0" stop-color="#2a2e2c"/><stop offset=".3" stop-color="#6f7773"/><stop offset=".55" stop-color="#9aa29e"/><stop offset=".8" stop-color="#555c59"/><stop offset="1" stop-color="#262a28"/>
+          </linearGradient>
+          <radialGradient id="potStew" cx=".5" cy=".4" r=".7">
+            <stop offset="0" stop-color="#f59a4a"/><stop offset=".6" stop-color="#e2631d"/><stop offset="1" stop-color="#a93a0a"/>
+          </radialGradient>
+          <clipPath id="potLiquid"><ellipse cx="120" cy="56" rx="82" ry="11"/></clipPath>
+        </defs>
+        <ellipse cx="120" cy="178" rx="92" ry="8" fill="rgba(0,0,0,.38)"/>
+        <rect x="2" y="66" width="38" height="16" rx="8" fill="#23272a"/>
+        <rect x="200" y="66" width="38" height="16" rx="8" fill="#23272a"/>
+        <path d="M24 52 L30 138 Q32 170 62 170 H178 Q208 170 210 138 L216 52 Z" fill="url(#potBody)"/>
+        <path d="M36 70 L40 136 Q41 154 54 160" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="6" stroke-linecap="round"/>
+        <path d="M27 100 Q120 116 213 100" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="2"/>
+        <ellipse cx="120" cy="52" rx="98" ry="18" fill="#a9b1ad"/>
+        <ellipse cx="120" cy="54" rx="90" ry="14.5" fill="#1d211f"/>
+        <ellipse cx="120" cy="56" rx="82" ry="11" fill="url(#potStew)"/>
+        <g clip-path="url(#potLiquid)">
+          <ellipse class="bub" style="--x:52px;--d:2.6s;--w:-.4s" cx="68" cy="58" rx="5" ry="3.4"/>
+          <ellipse class="bub" style="--x:0;--d:3.2s;--w:-1.5s" cx="104" cy="54" rx="6" ry="4"/>
+          <ellipse class="bub" style="--x:0;--d:2.9s;--w:-2.2s" cx="146" cy="58" rx="5" ry="3.4"/>
+          <ellipse class="bub" style="--x:0;--d:3.5s;--w:-.9s" cx="176" cy="55" rx="4" ry="2.8"/>
+          <ellipse class="bub" style="--x:0;--d:3.0s;--w:-1.9s" cx="124" cy="60" rx="4" ry="2.8"/>
+          <ellipse class="bub hard" style="--x:0;--d:1.1s;--w:-.2s" cx="86" cy="55" rx="5" ry="3.4"/>
+          <ellipse class="bub hard" style="--x:0;--d:1.4s;--w:-.7s" cx="132" cy="53" rx="6" ry="4"/>
+          <ellipse class="bub hard" style="--x:0;--d:1.2s;--w:-.5s" cx="160" cy="59" rx="5" ry="3.4"/>
+          <ellipse class="bub hard" style="--x:0;--d:1.0s;--w:-.9s" cx="62" cy="55" rx="4" ry="2.8"/>
+          <ellipse class="bub hard" style="--x:0;--d:1.3s;--w:-.3s" cx="110" cy="60" rx="4" ry="2.8"/>
+        </g>
+        <ellipse cx="120" cy="52" rx="98" ry="18" fill="none" stroke="#d3d9d5" stroke-width="2.5"/>
+      </svg>
+    </div>
+    <div class="cloth" id="cloth" aria-hidden="true">
+      <svg viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="clothCheck" width="32" height="32" patternUnits="userSpaceOnUse">
+            <rect width="16" height="16" fill="#e96820" opacity=".13"/><rect x="16" y="16" width="16" height="16" fill="#e96820" opacity=".13"/>
+          </pattern>
+        </defs>
+        <path id="clothShape" d="M18 34 Q70 10 132 24 T244 28 Q256 92 240 152 Q250 192 234 208 Q172 222 122 204 T22 202 Q8 122 18 34Z" fill="#fffdf7" stroke="#e8dcc8" stroke-width="2"/>
+        <path d="M18 34 Q70 10 132 24 T244 28 Q256 92 240 152 Q250 192 234 208 Q172 222 122 204 T22 202 Q8 122 18 34Z" fill="url(#clothCheck)"/>
+        <path d="M34 50 Q76 30 132 40 T228 44 Q238 96 226 150 Q234 184 222 194 Q170 204 124 190 T38 188 Q26 120 34 50Z" fill="none" stroke="#e96820" stroke-width="2.2" stroke-dasharray="7 6" stroke-linecap="round" opacity=".75"/>
+        <path d="M30 110 Q120 130 238 96" fill="none" stroke="rgba(60,40,20,.09)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M110 26 Q104 120 124 206" fill="none" stroke="rgba(60,40,20,.06)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="130" cy="118" r="26" fill="#e96820"/>
+        <text x="130" y="128" text-anchor="middle" font-family="'Playfair Display', serif" font-weight="700" font-size="32" fill="#fff">S</text>
+      </svg>
+    </div>
+
+    <canvas class="fog-canvas" id="fog-canvas" aria-hidden="true"></canvas>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Jollof Rice</span><span>Grilled Chicken</span><span>Fresh Salads</span><span>Cheesy Pizza</span><span>Juicy Burgers</span><span>Creamy Pasta</span><span>Sweet Treats</span>
+      <span>Jollof Rice</span><span>Grilled Chicken</span><span>Fresh Salads</span><span>Cheesy Pizza</span><span>Juicy Burgers</span><span>Creamy Pasta</span><span>Sweet Treats</span>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <section class="container">
+    <div class="story">
+      <div class="story-images reveal">
+        <img class="big" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=85" alt="Warm and welcoming restaurant" loading="lazy" />
+        <img class="small" src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=700&q=85" alt="Jollof rice" loading="lazy" />
+        <div class="exp-badge"><strong>10+</strong><small>YEARS OF TASTE</small></div>
+      </div>
+      <div class="story-text reveal" style="--d:.15s">
+        <div class="eyebrow">Welcome to Savora</div>
+        <h2>Good Food,<br />Good <em>Life</em></h2>
+        <p>At Savora, we believe good food brings people together. We prepare our meals with care and aim to give every customer a lovely dining experience.</p>
+        <p>Whether you're sharing a meal with family, spending time with friends, or enjoying food at home, we're glad to be part of your day.</p>
+        <ul class="checks">
+          <li>Fresh ingredients picked every morning</li>
+          <li>Recipes made by passionate, skilled chefs</li>
+          <li>Warm service in a welcoming space</li>
+        </ul>
+        <a class="btn" href="about.html">LEARN ABOUT US →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="reveal"><strong data-count="10" data-suffix="+">0</strong><span>YEARS OF EXPERIENCE</span></div>
+      <div class="reveal" style="--d:.1s"><strong data-count="50" data-suffix="+">0</strong><span>DELICIOUS DISHES</span></div>
+      <div class="reveal" style="--d:.2s"><strong data-count="15000" data-suffix="+">0</strong><span>HAPPY CUSTOMERS</span></div>
+      <div class="reveal" style="--d:.3s"><strong data-count="12" data-suffix="">0</strong><span>SKILLED CHEFS</span></div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="container">
+    <div class="section-heading reveal">
+      <div class="eyebrow">Why Savora</div>
+      <h2>Made to make your <em>day better</em></h2>
+      <p>Every plate we serve is a promise of freshness, flavour and care.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="ico">🌿</div><h3>Fresh Ingredients</h3><p>We choose quality produce every day so every bite tastes natural and full of life.</p></div>
+      <div class="why-card reveal" style="--d:.1s"><div class="ico">👨‍🍳</div><h3>Skilled Chefs</h3><p>Our kitchen team blends local tradition with modern technique on every plate.</p></div>
+      <div class="why-card reveal" style="--d:.2s"><div class="ico">🛵</div><h3>Fast Delivery</h3><p>Hot meals brought to your door quickly, so you enjoy them at their best.</p></div>
+      <div class="why-card reveal" style="--d:.3s"><div class="ico">❤️</div><h3>Made with Love</h3><p>Food is better when it's made with heart. That's the Savora way.</p></div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="section-sand" id="popular" style="scroll-margin-top:70px">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div class="eyebrow">Chef's Special</div>
+        <h2>Our Popular <em>Dishes</em></h2>
+        <p>Choose a meal you love and add it to your order.</p>
+      </div>
+      <div class="menu-grid" id="food-menu" data-preview="4"></div>
+      <div class="menu-more reveal"><a class="btn" href="menu.html">VIEW FULL MENU →</a></div>
+    </div>
+  </section>
+
+  <!-- SIGNATURE -->
+  <section class="signature">
+    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1800&q=80" alt="" loading="lazy" />
+    <div class="signature-inner reveal">
+      <div class="eyebrow">Special Offer</div>
+      <h2>Good Food, <em>Great Moments</em></h2>
+      <p>Your next favourite meal is waiting for you. Pick a dish, add it to your order and let us do the rest.</p>
+      <a class="btn" href="menu.html">ORDER NOW →</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="container">
+    <div class="section-heading reveal">
+      <div class="eyebrow">Simple &amp; Easy</div>
+      <h2>How it <em>works</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>Choose Your Meal</h3><p>Browse our menu and pick the dishes that match your mood.</p></div>
+      <div class="step reveal" style="--d:.15s"><div class="num">2</div><h3>Add to Your Order</h3><p>Add items, adjust quantities and review your order any time.</p></div>
+      <div class="step reveal" style="--d:.3s"><div class="num">3</div><h3>Sit Back &amp; Enjoy</h3><p>We prepare it fresh and bring it to you. Simple as that.</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section-sand">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div class="eyebrow">Testimonials</div>
+        <h2>What our guests <em>say</em></h2>
+      </div>
+      <div class="reviews">
+        <div class="review reveal"><div class="stars">★★★★★</div><p>The jollof rice is unbelievable. Perfect spice, perfect smoky flavour. It reminds me of home.</p><div class="reviewer"><div class="avatar">A</div><div><strong>Amaka O.</strong><small>Regular customer</small></div></div></div>
+        <div class="review reveal" style="--d:.15s"><div class="stars">★★★★★</div><p>Fast delivery and the burger arrived hot and juicy. Easily the best order I've made this year.</p><div class="reviewer"><div class="avatar">T</div><div><strong>Tunde B.</strong><small>Food lover</small></div></div></div>
+        <div class="review reveal" style="--d:.3s"><div class="stars">★★★★★</div><p>Lovely atmosphere and friendly staff. The chocolate cake is the perfect way to end a meal.</p><div class="reviewer"><div class="avatar">C</div><div><strong>Chioma E.</strong><small>Family diner</small></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="container">
+    <div class="section-heading reveal">
+      <div class="eyebrow">Gallery</div>
+      <h2>A taste of <em>Savora</em></h2>
+    </div>
+    <div class="gallery">
+      <figure class="tall reveal"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=700&q=80" alt="Jollof rice" loading="lazy" /></figure>
+      <figure class="wide reveal" style="--d:.1s"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80" alt="Burger" loading="lazy" /></figure>
+      <figure class="reveal" style="--d:.2s"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Chocolate cake" loading="lazy" /></figure>
+      <figure class="reveal" style="--d:.1s"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80" alt="Salad" loading="lazy" /></figure>
+      <figure class="wide reveal" style="--d:.2s"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Restaurant" loading="lazy" /></figure>
+      <figure class="reveal" style="--d:.3s"><img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80" alt="Grilled chicken" loading="lazy" /></figure>
+    </div>
+  </section>
+
+  <!-- RESERVE / CONTACT -->
+  <section class="section-dark" id="contact" style="scroll-margin-top:70px">
+    <div class="container">
+      <div class="reserve">
+        <div class="reveal">
+          <div class="eyebrow" style="color:var(--gold)">Reservation</div>
+          <h2>Book a <em style="color:var(--gold)">table</em> with us</h2>
+          <p>Planning a family dinner or a night out with friends? Reserve your spot and we'll have everything ready.</p>
+          <ul class="contact-list">
+            <li><span>✉</span>hello@savora.example</li>
+            <li><span>🕘</span>Open daily, 9am – 10pm</li>
+            <li><span>📍</span>Lagos, Nigeria</li>
+          </ul>
+        </div>
+        <form class="reserve-form reveal" style="--d:.15s" onsubmit="reserveTable(event)">
+          <h3>Reserve a table</h3>
+          <div class="field full"><label for="r-name">Your name</label><input id="r-name" type="text" placeholder="Full name" required /></div>
+          <div class="field"><label for="r-date">Date</label><input id="r-date" type="date" required /></div>
+          <div class="field"><label for="r-guests">Guests</label>
+            <select id="r-guests"><option>1 person</option><option selected>2 people</option><option>3 people</option><option>4 people</option><option>5+ people</option></select></div>
+          <button class="btn" type="submit">BOOK MY TABLE</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer id="site-footer"></footer>
+  <script src="script.js"></script>
+  <script src="steam.js"></script>
+</body>
+</html>
